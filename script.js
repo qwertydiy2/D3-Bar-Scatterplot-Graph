@@ -383,11 +383,11 @@ const w = 5000;
 const h = 5000;
 const padding = 60;
 const xScale = d3.scaleTime()
-.domain([new Date(1992, 1,1),new Date(2016, 1,1)])				 		.range([padding, h - padding])
+.domain([new Date(1992, 1,1),new Date(2016, 1,1)]).range([padding, h - padding])
 								 
 								 
 const yScale = d3.scaleLinear()
-.domain([d3.max(dataset, (d) => d["Time"]),0])
+.domain([d3.max(dataset, (d) => d["Seconds"]),0])
 .range([padding, w - padding]);
 console.log(ticks)
 const xAxis = d3.axisBottom(xScale)//.tickValues([1950,1955,1960,1965,1970,1975,1980,1985,1990,1995,2000,2005,2010])
@@ -479,3 +479,4 @@ const circle = svg.selectAll("circle")
 .data(dataset)
 .enter()
 .append("circle")
+.attr("cx",(d) => xScale(d["Year"]))
